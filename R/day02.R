@@ -92,9 +92,7 @@ f02b <- function(x) {
   out <- pulls %>%
     dplyr::group_by(game_id,pull_color) %>%
     dplyr::summarise(fewest_cubes = max(pull_amount)) %>%
-    dplyr::group_by(game_id) %>%
     dplyr::summarise(cube_product = prod(fewest_cubes)) %>%
-    dplyr::ungroup() %>%
     dplyr::summarise(cube_sum = sum(cube_product))
 
   return(out)
